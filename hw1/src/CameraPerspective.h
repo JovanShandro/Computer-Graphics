@@ -2,9 +2,7 @@
 // Written by Sergey Kosov in 2005 for Rendering Competition
 #pragma once
 
-#include "ICamera.h"
-#include <math.h>
-
+#include "ICamera.h" #include <math.h>
 // Helpful cotang function
 double cotan(double i) { return(1 / tan(i)); }
 
@@ -49,32 +47,28 @@ public:
 	virtual bool InitRay(float x, float y, Ray& ray) override
 	{
 		/*
-		 Just as in the slides we first normalize x and y and 
-		 then we take then to screen coordinates. I have used the same 
-		 procedure as explained in the following link sent by the TA:
-		 https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays?url=3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays
+		 We first normalize x and y 
 		*/
 		float ndcx = (x + 0.5) / getResolution().width;  
 		float ndcy = (y + 0.5) / getResolution().height;
 		
 		/*
-		 Here we multiply by aspect to take care of the case 
-		 in which the screen is not a square
+     * We go from normal to screen coordinates
+     * We multiply by aspect to take care of the case 
+     * in which the screen is not a square
 		*/
 		float sscx = (2 * ndcx - 1) * m_aspect;  
 		float sscy = (2 * ndcy - 1);
 
-        /*
-		 Use same logic for calculating ray.dir as in the slides
+    /*
+     * Calculate ray direction
 		*/
 		Vec3f f = m_dir * m_focus;
 		ray.org = m_pos;
 		ray.dir =  f + sscx * m_xAxis + sscy * m_yAxis;
 		
 		/*
-		 we initialize t to a really big number so that we can use it
-		 for comparisons and be sure we get a smaller t upon intersection in
-		 the first time. We give it the biggest possible float number.
+     * Initialize t to a relatiely large value
 		*/
 		ray.t   = 340282e+38;
 

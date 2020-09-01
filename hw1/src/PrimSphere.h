@@ -2,11 +2,6 @@
 // Written by Sergey Kosov in 2005 for Rendering Competition
 #pragma once
 
-/*
-	Reference:
-	https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
-*/
-
 #include "Prim.h"
 
 /**

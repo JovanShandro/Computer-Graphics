@@ -46,10 +46,12 @@ public:
 		float lambda_star2  = nbc.dot(ray.dir);
 		float lambda_star3  = nca.dot(ray.dir);
 		float lambda_star_sum = (nca + nab + nbc).dot(ray.dir);
+
 		// Calculating Lambdas
 		float lambda1  = nab.dot(ray.dir) /lambda_star_sum;
 		float lambda2  = nbc.dot(ray.dir) /lambda_star_sum;
 		float lambda3  = nca.dot(ray.dir) /lambda_star_sum;
+
 		// Check if Lambdas are positive
 		if(lambda1 < 0)
 			return false;
