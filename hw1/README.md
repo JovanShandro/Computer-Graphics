@@ -1,14 +1,5 @@
 # Practical Assignment 1
 
-## Running The code
-
-```
-cmake CMakeLists.txt
-make
-cd bin
-./eyden-tracer
-```
-
 And the images will be generated under the bin folder
 
 ## Problem 1.3
